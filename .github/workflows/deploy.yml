@@ -3,8 +3,6 @@
 name: AWS example workflow
 on:
   push
-env:
-  AWS_REGION : "us-east-1"
 # permission can be added at job level or workflow level
 permissions:
   id-token: write   # This is required for requesting the JWT
@@ -20,7 +18,7 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::538958865536:role/fastapi-gradio-app-cdk-deploy
           role-session-name: samplerolesession
-          aws-region: ${{ env.AWS_REGION }}
+          aws-region: "us-east-1"
       # Get caller identity to verify the action
       - name:  Get Caller Identity
         run: |
